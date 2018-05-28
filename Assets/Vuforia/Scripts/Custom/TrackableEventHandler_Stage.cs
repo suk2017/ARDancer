@@ -55,13 +55,13 @@ public class TrackableEventHandler_Stage : MonoBehaviour, ITrackableEventHandler
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
-            //OnTrackingFound();
+            OnTrackingFound();
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED &&
                  newStatus == TrackableBehaviour.Status.NO_POSE)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
-            //OnTrackingLost();
+            OnTrackingLost();
         }
         else
         {
@@ -78,7 +78,7 @@ public class TrackableEventHandler_Stage : MonoBehaviour, ITrackableEventHandler
 
     protected virtual void OnTrackingFound()
     {
-        Debug.Log("found");
+        DancerManager.current.Scene_Start();
 
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
@@ -100,7 +100,6 @@ public class TrackableEventHandler_Stage : MonoBehaviour, ITrackableEventHandler
 
     protected virtual void OnTrackingLost()
     {
-        Debug.Log("lost");
 
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
