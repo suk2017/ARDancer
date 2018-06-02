@@ -49,14 +49,14 @@ public class DancerManager : MonoBehaviour
 
     private void Update()
     {
-        target.rotation = Quaternion.Euler(0, slider.value * 360f, 0);
+        root.rotation = Quaternion.Euler(0, slider.value * 360f, 0);
         root.localScale = Vector3.one * (slider2.value * 2 + 0.3f);
         float result = Vector3.SqrMagnitude(camera.position);
-        if (result < 50f && !dancing)
+        if (result < 30f && !dancing)
         {
             Dance();
         }
-        else if (result > 50f && dancing)
+        else if (result > 30f && dancing)
         {
             Dance();
         }
